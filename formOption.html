@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Использование элементов Selelct и Option</h1>
+    <form id="myForm" name="myForm">
+        <label for="selUrl" disabled>Выберите адрес</label>
+        <select name="selUrl" id="selUrl" disabled></select>
+        <a href="javascript:goToUrl()">Переход</a>
+    </form>
+    <script>
+        
+      let a=document.links[0];
+      let select=document.forms.myForm;
+      select=select.selUrl;
+
+        function goToUrl(){
+            let selectIndex=select.selectedIndex;
+            let option=select.options[selectIndex];
+            console.log(option.value)
+            
+            location.href=option.value;
+        }
+
+        var links=new Object();                     //создали объект с ссылками 
+        links["Bigmir"]="http://www.bigmir.net";
+        links["Yahoo"]="http://www.yahoo.com";
+        links["Google"]="http://www.google.com.ua";
+                   
+
+    
+        
+        
+        //создаем в select option циклом
+        for(let text in links){
+            let option=new Option();
+           option.text=text;
+           option.value=links[text];
+           select.add(option); 
+        }
+
+        select.disabled=false;
+        a.style.visibility="visible";
+
+    </script>
+    
+</body>
+</html>
