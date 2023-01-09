@@ -43,6 +43,44 @@
 		<h2>Запуск кода</h2>
 		<p>Для запуска кода щелкните <a href="javascript:showDOM()">здесь</a></p>
 	</div>
+	<script>
+		let newWindow;
+		let html="<html>" + "<body>";
+		let html2="</body>" + "</html>";
+
+		
+		function showDOM(){
+			newWindow=window.open();
+			newWindow.document.write(html);
+			showChildNodes(document.body, newWindow);
+			newWindow.document.write(html2);
+		}
+
+
+	function showChildNodes(node,doc){
+
+	for(let nodes of node.childNodes){
+
+
+    switch(nodes.nodeType){
+	
+
+	case 3:	doc.document.write(nodes.textContent + `<br>`);	
+			break;
+	case 1:	doc.document.write(nodes.nodeName + `<br>`);
+	
+			showChildNodes(nodes,newWindow);
+			
+			}	
+		
+
+}}
+
+
+
+
+
+	</script>
 
 </body>
 </html>
